@@ -48,7 +48,6 @@ __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_ST7789.git"
 
 _INIT_SEQUENCE = (
-    b"\x01\x80\x80" # _SWRESET and Delay 128ms
     b"\x01\x80\x96" # _SWRESET and Delay 150ms
     b"\x11\x80\xFF" # _SLPOUT and Delay 500ms
     b"\x3A\x81\x55\x0A" # _COLMOD and Delay 10ms
