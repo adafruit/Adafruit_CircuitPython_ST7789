@@ -57,7 +57,7 @@ _INIT_SEQUENCE = (
     b"\x13\x80\x0A" # _NORON and Delay 10ms
     b"\x29\x80\xFF" # _DISPON and Delay 500ms
     b"\x36\x01\xC0" # _MADCTL
- )
+)
 
 # pylint: disable=too-few-public-methods
 class ST7789(displayio.Display):
