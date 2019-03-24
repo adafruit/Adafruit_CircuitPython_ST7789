@@ -63,4 +63,4 @@ _INIT_SEQUENCE = (
 class ST7789(displayio.Display):
     """ST7789 driver"""
     def __init__(self, bus, **kwargs):
-        super().__init__(bus, _INIT_SEQUENCE, **kwargs, init_cs_toggle=True)
+        super().__init__(bus, _INIT_SEQUENCE, **kwargs)
