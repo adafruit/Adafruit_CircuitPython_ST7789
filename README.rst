@@ -30,27 +30,39 @@ Usage Example
 
 .. code-block:: python
 
-    from adafruit_st7789 import ST7789
     import board
-    import busio
     import displayio
-    import time
+    from adafruit_st7789 import ST7789
+
+    spi = board.SPI()
+    tft_cs = board.D5
+    tft_dc = board.D6
 
     displayio.release_displays()
+    display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=board.D9)
 
-    spi = busio.SPI(board.SCL, board.SDA)
-    bus = displayio.FourWire(spi, chip_select=board.D9, command=board.D7, reset=board.D8)
-    display = ST7789(bus, width=128, height=128)
+    display = ST7789(display_bus, width=240, height=240, rowstart=80)
 
-    s = displayio.Shape(10, 10)
-    p = displayio.Palette(2)
-    p[1] = 0xff0000
-    s = displayio.TileGrid(s, pixel_shader=p, x=0, y=0)
-    everything = displayio.Group(max_size=10)
-    everything.append(s)
-    display.show(everything)
+    # Make the display context
+    splash = displayio.Group(max_size=10)
+    display.show(splash)
 
-    time.sleep(10)
+    color_bitmap = displayio.Bitmap(240, 240, 1)
+    color_palette = displayio.Palette(1)
+    color_palette[0] = 0xFF0000
+
+    try:
+        bg_sprite = displayio.TileGrid(color_bitmap,
+                                       pixel_shader=color_palette,
+                                       position=(0, 0))
+    except TypeError:
+        bg_sprite = displayio.TileGrid(color_bitmap,
+                                       pixel_shader=color_palette,
+                                       x=0, y=0)
+    splash.append(bg_sprite)
+
+    while True:
+        pass
 
 Contributing
 ============
