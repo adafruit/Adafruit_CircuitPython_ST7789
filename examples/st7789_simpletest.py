@@ -9,7 +9,7 @@ from adafruit_st7789 import ST7789
 
 spi = board.SPI()
 while not spi.try_lock():
-  pass
+    pass
 spi.configure(baudrate=24000000) # Configure SPI for 24MHz
 spi.unlock()
 tft_cs = board.D5
