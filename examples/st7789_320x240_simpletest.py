@@ -8,15 +8,13 @@ import terminalio
 from adafruit_display_text import label
 from adafruit_st7789 import ST7789
 
+# Release any resources currently in use for the displays
+displayio.release_displays()
+
 spi = board.SPI()
-while not spi.try_lock():
-    pass
-spi.configure(baudrate=24000000) # Configure SPI for 24MHz
-spi.unlock()
 tft_cs = board.D5
 tft_dc = board.D6
 
-displayio.release_displays()
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=board.D9)
 
 display = ST7789(display_bus, width=320, height=240, rotation=90)
