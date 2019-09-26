@@ -19,7 +19,8 @@ tft_backlight = board.A3
 
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs)
 
-display = ST7789(display_bus, width=240, height=240, rowstart=80, backlight_pin=tft_backlight, rotation=180)
+display = ST7789(display_bus, width=240, height=240, rowstart=80,
+                 backlight_pin=tft_backlight, rotation=180)
 
 # Make the display context
 splash = displayio.Group(max_size=10)
