@@ -29,5 +29,5 @@ install:
 script:
   - pylint adafruit_st7789.py
   - ([[ ! -d "examples" ]] || pylint --disable=missing-docstring,invalid-name,bad-whitespace examples/*.py)
-  - circuitpython-build-bundles --filename_prefix adafruit-circuitpython-st7735 --library_location .
+  - circuitpython-build-bundles --filename_prefix adafruit-circuitpython-st7789 --library_location .
   - cd docs && sphinx-build -E -W -b html . _build/html && cd ..
