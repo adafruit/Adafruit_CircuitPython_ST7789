@@ -109,7 +109,7 @@ html_static_path = ['_static']
 html_favicon = '_static/favicon.ico'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'AdafruitSt7735Librarydoc'
+htmlhelp_basename = 'AdafruitSt7789Librarydoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
