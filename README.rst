@@ -9,8 +9,8 @@ Introduction
     :target: https://discord.gg/nBQh6qu
     :alt: Discord
 
-.. image:: https://travis-ci.com/adafruit/Adafruit_CircuitPython_ST7789.svg?branch=master
-    :target: https://travis-ci.com/adafruit/Adafruit_CircuitPython_ST7789
+.. image:: https://github.com/adafruit/Adafruit_CircuitPython_ST7789/workflows/Build%20CI/badge.svg
+    :target: https://github.com/adafruit/Adafruit_CircuitPython_ST7789/actions/
     :alt: Build Status
 
 displayio driver for ST7789 TFT-LCD displays.
