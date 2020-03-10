@@ -48,18 +48,19 @@ __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_ST7789.git"
 
 _INIT_SEQUENCE = (
-    b"\x01\x80\x96" # _SWRESET and Delay 150ms
-    b"\x11\x80\xFF" # _SLPOUT and Delay 500ms
-    b"\x3A\x81\x55\x0A" # _COLMOD and Delay 10ms
-    b"\x36\x01\x08" # _MADCTL
-    b"\x21\x80\x0A" # _INVON Hack and Delay 10ms
-    b"\x13\x80\x0A" # _NORON and Delay 10ms
-    b"\x36\x01\xC0" # _MADCTL
-    b"\x29\x80\xFF" # _DISPON and Delay 500ms
+    b"\x01\x80\x96"  # _SWRESET and Delay 150ms
+    b"\x11\x80\xFF"  # _SLPOUT and Delay 500ms
+    b"\x3A\x81\x55\x0A"  # _COLMOD and Delay 10ms
+    b"\x36\x01\x08"  # _MADCTL
+    b"\x21\x80\x0A"  # _INVON Hack and Delay 10ms
+    b"\x13\x80\x0A"  # _NORON and Delay 10ms
+    b"\x36\x01\xC0"  # _MADCTL
+    b"\x29\x80\xFF"  # _DISPON and Delay 500ms
 )
 
 # pylint: disable=too-few-public-methods
 class ST7789(displayio.Display):
     """ST7789 driver"""
+
     def __init__(self, bus, **kwargs):
         super().__init__(bus, _INIT_SEQUENCE, **kwargs)
