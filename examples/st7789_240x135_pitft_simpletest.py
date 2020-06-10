@@ -1,6 +1,8 @@
 """
 This test will initialize the display using displayio and draw a solid green
 background, a smaller purple rectangle, and some yellow text.
+
+Pinouts are for the 1.14" Mini PiTFT and should be run in CPython.
 """
 import board
 import terminalio
@@ -19,12 +21,12 @@ TEXT_COLOR = 0xFFFF00
 displayio.release_displays()
 
 spi = board.SPI()
-tft_cs = board.D5
-tft_dc = board.D6
+tft_cs = board.CE0
+tft_dc = board.D25
 
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs)
 display = ST7789(
-    display_bus, rotation=270, width=240, height=135, rowstart=40, colstart=53
+    display_bus, rotation=90, width=240, height=135, rowstart=40, colstart=53
 )
 
 # Make the display context
