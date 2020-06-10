@@ -50,6 +50,7 @@ https://www.adafruit.com/product/4313
 * Adafruit Mini PiTFT - 135x240 Color TFT Add-on for Raspberry Pi:
   https://www.adafruit.com/product/4393
 
+
 **Software and Dependencies:**
 
 * Adafruit CircuitPython firmware for the supported boards:
