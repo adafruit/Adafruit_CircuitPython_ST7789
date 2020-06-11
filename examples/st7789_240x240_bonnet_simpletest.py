@@ -1,6 +1,8 @@
 """
 This test will initialize the display using displayio and draw a solid green
 background, a smaller purple rectangle, and some yellow text.
+
+Pinouts are for the 1.3" TFT Bonnet and should be run in CPython.
 """
 import board
 import terminalio
@@ -12,14 +14,20 @@ from adafruit_st7789 import ST7789
 displayio.release_displays()
 
 spi = board.SPI()
-tft_cs = board.D5
-tft_dc = board.D6
+tft_cs = board.CE0
+tft_dc = board.D25
+tft_lite = board.D26
 
-display_bus = displayio.FourWire(
-    spi, command=tft_dc, chip_select=tft_cs, reset=board.D9
+display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs)
+
+display = ST7789(
+    display_bus,
+    width=240,
+    height=240,
+    rowstart=80,
+    rotation=180,
+    backlight_pin=tft_lite,
 )
-
-display = ST7789(display_bus, width=240, height=240, rowstart=80)
 
 # Make the display context
 splash = displayio.Group(max_size=10)

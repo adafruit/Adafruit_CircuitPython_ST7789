@@ -32,8 +32,23 @@ Implementation Notes
 
 **Hardware:**
 
-* Adafruit 1.54" 240x240 Wide Angle TFT LCD Display with MicroSD:
+* Adafruit 1.3" 240x240 Wide Angle TFT LCD Display with MicroSD - ST7789:
+  https://www.adafruit.com/product/4313
+
+* Adafruit 1.54" 240x240 Wide Angle TFT LCD Display with MicroSD - ST7789:
   https://www.adafruit.com/product/3787
+
+* Adafruit 1.14" 240x135 Color TFT Display + MicroSD Card Breakout - ST7789:
+  https://www.adafruit.com/product/4383
+
+* Adafruit Mini PiTFT 1.3" - 240x240 TFT Add-on for Raspberry Pi:
+  https://www.adafruit.com/product/4484
+
+* Adafruit 1.3" Color TFT Bonnet for Raspberry Pi - 240x240 TFT + Joystick Add-on
+  https://www.adafruit.com/product/4506
+
+* Adafruit Mini PiTFT - 135x240 Color TFT Add-on for Raspberry Pi:
+  https://www.adafruit.com/product/4393
 
 **Software and Dependencies:**
 
