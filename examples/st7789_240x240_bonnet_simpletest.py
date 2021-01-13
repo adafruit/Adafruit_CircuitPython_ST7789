@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2021 ladyada for Adafruit Industries
+# SPDX-License-Identifier: MIT
+
 """
 This test will initialize the display using displayio and draw a solid green
 background, a smaller purple rectangle, and some yellow text.
