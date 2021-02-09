@@ -10,13 +10,24 @@ import terminalio
 import displayio
 from adafruit_display_text import label
 from adafruit_st7789 import ST7789
+import busio # added for Raspberry Pi Pico
 
 # Release any resources currently in use for the displays
 displayio.release_displays()
 
-spi = board.SPI()
-tft_cs = board.D5
-tft_dc = board.D6
+#spi = board.SPI()
+#tft_cs = board.D5
+#tft_dc = board.D6
+
+"""
+above disabled from general usage, below added to enable the Pimoroni Display Pack for Raspberry Pi Pico
+"""
+
+tft_cs = board.GP17
+tft_dc = board.GP16
+spi_mosi = board.GP19
+spi_clk = board.GP18
+spi = busio.SPI(spi_clk, spi_mosi)
 
 display_bus = displayio.FourWire(
     spi, command=tft_dc, chip_select=tft_cs, reset=board.D9
