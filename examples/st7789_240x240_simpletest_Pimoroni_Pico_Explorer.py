@@ -21,9 +21,7 @@ spi_mosi = board.GP19
 spi_clk = board.GP18
 spi = busio.SPI(spi_clk, spi_mosi)
 
-display_bus = displayio.FourWire(
-    spi, command=tft_dc, chip_select=tft_cs
-)
+display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs)
 
 display = ST7789(display_bus, width=240, height=240, rowstart=80, rotation=180)
 
