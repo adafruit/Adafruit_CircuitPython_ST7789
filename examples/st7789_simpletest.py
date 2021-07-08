@@ -25,7 +25,7 @@ display_bus = displayio.FourWire(
 display = ST7789(display_bus, width=240, height=240, rowstart=80)
 
 # Make the display context
-splash = displayio.Group(max_size=10)
+splash = displayio.Group()
 display.show(splash)
 
 color_bitmap = displayio.Bitmap(240, 240, 1)
@@ -43,7 +43,7 @@ inner_sprite = displayio.TileGrid(inner_bitmap, pixel_shader=inner_palette, x=20
 splash.append(inner_sprite)
 
 # Draw a label
-text_group = displayio.Group(max_size=10, scale=2, x=50, y=120)
+text_group = displayio.Group(scale=2, x=50, y=120)
 text = "Hello World!"
 text_area = label.Label(terminalio.FONT, text=text, color=0xFFFF00)
 text_group.append(text_area)  # Subgroup for text scaling
