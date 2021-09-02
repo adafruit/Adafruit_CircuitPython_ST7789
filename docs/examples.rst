@@ -14,6 +14,13 @@ Ensure your device works with this simple test.
     :caption: examples/st7789_240x135_simpletest.py
     :linenos:
 
+280x240
+=======
+
+.. literalinclude:: ../examples/st7789_280x240_simpletest.py
+    :caption: examples/st7789_280x240_simpletest.py
+    :linenos:
+
 320x240
 =======
 
