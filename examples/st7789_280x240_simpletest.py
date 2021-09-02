@@ -15,8 +15,8 @@ from adafruit_st7789 import ST7789
 displayio.release_displays()
 
 spi = board.SPI()
-tft_cs = board.D10
-tft_dc = board.D8
+tft_cs = board.D5
+tft_dc = board.D6
 
 display_bus = displayio.FourWire(
     spi, command=tft_dc, chip_select=tft_cs, reset=board.D9
