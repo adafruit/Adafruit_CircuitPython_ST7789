@@ -74,7 +74,7 @@ Pimoroni Pico Explorer
     :linenos:
 
 Pimoroni Pico Display Pack 2.0
-======================
+==============================
 
 .. literalinclude:: ../examples/st7789_320x240_simpletest_Pimoroni_Pico_Display_2_0.py
     :caption: examples/st7789_320x240_simpletest_Pimoroni_Pico_Display_2_0.py
