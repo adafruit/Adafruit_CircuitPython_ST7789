@@ -79,3 +79,10 @@ Pimoroni Pico Display Pack 2.0
 .. literalinclude:: ../examples/st7789_320x240_simpletest_Pimoroni_Pico_Display_2_0.py
     :caption: examples/st7789_320x240_simpletest_Pimoroni_Pico_Display_2_0.py
     :linenos:
+
+Waveshare Pico LCD 1.3
+==============================
+
+.. literalinclude:: ../examples/st7789_240x240_simpletest_Waveshare_PicoLCD_1_3.py
+    :caption: examples/st7789_240x240_simpletest_Waveshare_PicoLCD_1_3.py
+    :linenos:
