@@ -26,7 +26,12 @@ spi = busio.SPI(spi_clk, spi_mosi)
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
 
 display = ST7789(
-    display_bus, rotation=270, width=240, height=240, rowstart=80, backlight_pin=backlight
+    display_bus,
+    rotation=270,
+    width=240,
+    height=240,
+    rowstart=80,
+    backlight_pin=backlight,
 )
 
 # Make the display context
