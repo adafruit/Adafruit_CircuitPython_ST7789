@@ -22,9 +22,7 @@ tft_cs = board.D5
 tft_dc = board.D6
 tft_rst = board.D9
 
-display_bus = displayio.FourWire(
-    spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst
-)
+display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
 
 display = ST7789(display_bus, width=320, height=170, colstart=34, rotation=90)
 
@@ -39,20 +37,24 @@ bg_sprite = displayio.TileGrid(color_bitmap, pixel_shader=color_palette, x=0, y=
 splash.append(bg_sprite)
 
 # Draw a smaller inner rectangle
-inner_bitmap = displayio.Bitmap(display.width - (BORDER_WIDTH * 2), display.height - (BORDER_WIDTH * 2), 1)
+inner_bitmap = displayio.Bitmap(
+    display.width - (BORDER_WIDTH * 2), display.height - (BORDER_WIDTH * 2), 1
+)
 inner_palette = displayio.Palette(1)
 inner_palette[0] = 0xAA0088  # Purple
-inner_sprite = displayio.TileGrid(inner_bitmap, pixel_shader=inner_palette, x=BORDER_WIDTH, y=BORDER_WIDTH)
+inner_sprite = displayio.TileGrid(
+    inner_bitmap, pixel_shader=inner_palette, x=BORDER_WIDTH, y=BORDER_WIDTH
+)
 splash.append(inner_sprite)
 
 # Draw a label
 text_area = label.Label(
-    terminalio.FONT, 
+    terminalio.FONT,
     text="Hello World!",
     color=0xFFFF00,
     scale=TEXT_SCALE,
     anchor_point=(0.5, 0.5),
-    anchored_position=(display.width // 2, display.height // 2)
+    anchored_position=(display.width // 2, display.height // 2),
 )
 splash.append(text_area)
 
