@@ -41,7 +41,6 @@ Implementation Notes
 """
 
 import displayio
-
 __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_ST7789.git"
 
@@ -60,5 +59,5 @@ _INIT_SEQUENCE = (
 class ST7789(displayio.Display):
     """ST7789 driver"""
 
-    def __init__(self, bus, **kwargs):
+    def __init__(self, bus, **kwargs) -> None:
         super().__init__(bus, _INIT_SEQUENCE, **kwargs)
