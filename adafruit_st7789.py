@@ -60,5 +60,5 @@ _INIT_SEQUENCE = (
 class ST7789(displayio.Display):
     """ST7789 driver"""
 
-    def __init__(self, bus, **kwargs) -> None:
+    def __init__(self, bus: displayio.FourWire, **kwargs) -> None:
         super().__init__(bus, _INIT_SEQUENCE, **kwargs)
