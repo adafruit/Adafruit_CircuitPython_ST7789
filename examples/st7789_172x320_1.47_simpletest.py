@@ -18,9 +18,9 @@ TEXT_SCALE = 3
 # Release any resources currently in use for the displays
 displayio.release_displays()
 
-tft_cs = board.GP5 #board.D5
-tft_dc = board.GP6 #board.D6
-tft_rst = board.GP7 #board.D7
+tft_cs = board.GP5  # board.D5
+tft_dc = board.GP6  # board.D6
+tft_rst = board.GP7  # board.D7
 
 spi = busio.SPI(board.GP2, board.GP3, board.GP4)
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
@@ -35,7 +35,7 @@ color_bitmap = displayio.Bitmap(display.width, display.height, 1)
 color_palette = displayio.Palette(1)
 color_palette[0] = 0x00FF00  # Bright Green
 bg_sprite = displayio.TileGrid(color_bitmap, pixel_shader=color_palette, x=0, y=0)
-splash.append(bg_sprite) 
+splash.append(bg_sprite)
 
 # Draw a smaller inner rectangle
 inner_bitmap = displayio.Bitmap(
