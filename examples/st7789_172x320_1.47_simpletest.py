@@ -18,11 +18,21 @@ TEXT_SCALE = 3
 # Release any resources currently in use for the displays
 displayio.release_displays()
 
-tft_cs = board.GP5  # board.D5
-tft_dc = board.GP6  # board.D6
-tft_rst = board.GP7  # board.D7
+# built-in, silkscreen labelled SPI bus  
+spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
+tft_cs = board.D5
+tft_dc = board.D6
+tft_rst = board.D9
 
-spi = busio.SPI(board.GP2, board.GP3, board.GP4)
+# If using a Raspberry Pi Pico or Pico-w 
+# Uncomment the below code to use GP (General Purpose) pins 
+# instead of D (Digital)
+
+# spi = busio.SPI(board.GP2, board.GP3, board.GP4)
+# tft_cs = board.GP5
+# tft_dc = board.GP6
+# tft_rst = board.GP7
+
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
 
 display = ST7789(display_bus, width=320, height=172, colstart=34, rotation=270)
