@@ -38,15 +38,16 @@ Usage Example
     import displayio
     from adafruit_st7789 import ST7789
 
-    spi = board.SPI()
+    displayio.release_displays()
+
     while not spi.try_lock():
         pass
+    spi = board.SPI()
     spi.configure(baudrate=24000000) # Configure SPI for 24MHz
     spi.unlock()
     tft_cs = board.D5
     tft_dc = board.D6
 
-    displayio.release_displays()
     display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=board.D9)
 
     display = ST7789(display_bus, width=240, height=240, rowstart=80)
