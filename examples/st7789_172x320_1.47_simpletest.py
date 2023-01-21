@@ -11,16 +11,28 @@ import displayio
 from adafruit_display_text import label
 from adafruit_st7789 import ST7789
 
-BORDER_WIDTH = 20
+
+BORDER_WIDTH = 28
 TEXT_SCALE = 3
 
 # Release any resources currently in use for the displays
 displayio.release_displays()
 
+# built-in, silkscreen labelled SPI bus
 spi = board.SPI()
 tft_cs = board.D5
 tft_dc = board.D6
 tft_rst = board.D9
+
+# If using a Raspberry Pi Pico or Pico-w
+# Uncomment the below code to use GP (General Purpose) pins
+# instead of D (Digital)
+
+# import busio
+# spi = busio.SPI(board.GP2, board.GP3, board.GP4)
+# tft_cs = board.GP5
+# tft_dc = board.GP6
+# tft_rst = board.GP7
 
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
 
@@ -40,6 +52,7 @@ splash.append(bg_sprite)
 inner_bitmap = displayio.Bitmap(
     display.width - (BORDER_WIDTH * 2), display.height - (BORDER_WIDTH * 2), 1
 )
+
 inner_palette = displayio.Palette(1)
 inner_palette[0] = 0xAA0088  # Purple
 inner_sprite = displayio.TileGrid(
