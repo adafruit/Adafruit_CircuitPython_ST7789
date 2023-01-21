@@ -3,7 +3,7 @@
 
 """
 This test will initialize the display using displayio and draw a solid green
-background, a smaller purple rectangle, and some yellow text..
+background, a smaller purple rectangle, and some yellow text.
 """
 import board
 import busio
@@ -12,6 +12,7 @@ import displayio
 from adafruit_display_text import label
 from adafruit_st7789 import ST7789
 
+
 BORDER_WIDTH = 28
 TEXT_SCALE = 3
 
@@ -19,7 +20,7 @@ TEXT_SCALE = 3
 displayio.release_displays()
 
 # built-in, silkscreen labelled SPI bus  
-spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
+spi = board.SPI()
 tft_cs = board.D5
 tft_dc = board.D6
 tft_rst = board.D9
@@ -62,7 +63,7 @@ splash.append(inner_sprite)
 # Draw a label
 text_area = label.Label(
     terminalio.FONT,
-    text="Hello World!!",
+    text="Hello World!",
     color=0xFFFF00,
     scale=TEXT_SCALE,
     anchor_point=(0.5, 0.5),
