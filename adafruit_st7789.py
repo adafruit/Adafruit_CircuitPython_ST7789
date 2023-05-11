@@ -56,6 +56,7 @@ _INIT_SEQUENCE = (
     b"\x29\x80\xFF"  # _DISPON and Delay 500ms
 )
 
+
 # pylint: disable=too-few-public-methods
 class ST7789(displayio.Display):
     """ST7789 driver"""
