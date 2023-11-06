@@ -9,6 +9,13 @@ import board
 import busio
 import terminalio
 import displayio
+
+# Starting in CircuitPython 9.x fourwire will be a seperate internal library
+# rather than a component of the displayio library
+try:
+    from fourwire import FourWire
+except ImportError:
+    from displayio import FourWire
 from adafruit_display_text import label
 from adafruit_st7789 import ST7789
 
@@ -21,13 +28,13 @@ spi_mosi = board.GP19
 spi_clk = board.GP18
 spi = busio.SPI(spi_clk, spi_mosi)
 
-display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs)
+display_bus = FourWire(spi, command=tft_dc, chip_select=tft_cs)
 
 display = ST7789(display_bus, width=240, height=240, rowstart=80, rotation=180)
 
 # Make the display context
 splash = displayio.Group()
-display.show(splash)
+display.root_group = splash
 
 color_bitmap = displayio.Bitmap(240, 240, 1)
 color_palette = displayio.Palette(1)
