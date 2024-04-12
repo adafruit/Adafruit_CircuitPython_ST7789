@@ -39,7 +39,13 @@ backlight = board.GP20
 display_bus = FourWire(spi, command=tft_dc, chip_select=tft_cs)
 
 display = ST7789(
-    display_bus, rotation=270, width=240, height=135, rowstart=40, colstart=53, backlight_pin=backlight
+    display_bus,
+    rotation=270,
+    width=240,
+    height=135,
+    rowstart=40,
+    colstart=53,
+    backlight_pin=backlight,
 )
 
 # Set the backlight
