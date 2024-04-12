@@ -35,6 +35,9 @@ display = ST7789(
     display_bus, rotation=270, width=320, height=240, backlight_pin=backlight
 )
 
+# Set the backlight
+display.brightness = 0.8
+
 # Make the display context
 splash = displayio.Group()
 display.root_group = splash
