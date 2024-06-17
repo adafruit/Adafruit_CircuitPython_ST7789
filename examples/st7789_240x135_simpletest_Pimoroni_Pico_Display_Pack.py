@@ -1,6 +1,10 @@
 # SPDX-FileCopyrightText: 2021 ladyada for Adafruit Industries
 # SPDX-License-Identifier: MIT
 
+"""
+This test will initialize the display using displayio and draw a solid green
+background, a smaller purple rectangle, and some yellow text.
+"""
 import board
 import busio
 import terminalio
@@ -30,11 +34,22 @@ tft_dc = board.GP16
 spi_mosi = board.GP19
 spi_clk = board.GP18
 spi = busio.SPI(spi_clk, spi_mosi)
+backlight = board.GP20
 
 display_bus = FourWire(spi, command=tft_dc, chip_select=tft_cs)
+
 display = ST7789(
-    display_bus, rotation=270, width=240, height=135, rowstart=40, colstart=53
+    display_bus,
+    rotation=270,
+    width=240,
+    height=135,
+    rowstart=40,
+    colstart=53,
+    backlight_pin=backlight,
 )
+
+# Set the backlight
+display.brightness = 0.8
 
 # Make the display context
 splash = displayio.Group()
