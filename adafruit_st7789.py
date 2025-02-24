@@ -40,27 +40,27 @@ Implementation Notes
 
 """
 
-# Starting in CircuitPython 9.x fourwire will be a seperate internal library
-# rather than a component of the displayio library
+from busdisplay import BusDisplay
+
 try:
+    import typing
+
     from fourwire import FourWire
-    from busdisplay import BusDisplay
 except ImportError:
-    from displayio import FourWire
-    from displayio import Display as BusDisplay
+    pass
 
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_ST7789.git"
 
 _INIT_SEQUENCE = (
     b"\x01\x80\x96"  # _SWRESET and Delay 150ms
-    b"\x11\x80\xFF"  # _SLPOUT and Delay 500ms
-    b"\x3A\x81\x55\x0A"  # _COLMOD and Delay 10ms
+    b"\x11\x80\xff"  # _SLPOUT and Delay 500ms
+    b"\x3a\x81\x55\x0a"  # _COLMOD and Delay 10ms
     b"\x36\x01\x08"  # _MADCTL
-    b"\x21\x80\x0A"  # _INVON Hack and Delay 10ms
-    b"\x13\x80\x0A"  # _NORON and Delay 10ms
-    b"\x36\x01\xC0"  # _MADCTL
-    b"\x29\x80\xFF"  # _DISPON and Delay 500ms
+    b"\x21\x80\x0a"  # _INVON Hack and Delay 10ms
+    b"\x13\x80\x0a"  # _NORON and Delay 10ms
+    b"\x36\x01\xc0"  # _MADCTL
+    b"\x29\x80\xff"  # _DISPON and Delay 500ms
 )
 
 

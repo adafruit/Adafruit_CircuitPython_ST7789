@@ -7,17 +7,13 @@ background, a smaller purple rectangle, and some yellow text.
 
 Pinouts are for the 1.3" TFT Bonnet and should be run in CPython.
 """
-import board
-import terminalio
-import displayio
 
-# Starting in CircuitPython 9.x fourwire will be a seperate internal library
-# rather than a component of the displayio library
-try:
-    from fourwire import FourWire
-except ImportError:
-    from displayio import FourWire
+import board
+import displayio
+import terminalio
 from adafruit_display_text import label
+from fourwire import FourWire
+
 from adafruit_st7789 import ST7789
 
 # Release any resources currently in use for the displays
