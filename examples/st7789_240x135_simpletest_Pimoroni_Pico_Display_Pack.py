@@ -5,18 +5,14 @@
 This test will initialize the display using displayio and draw a solid green
 background, a smaller purple rectangle, and some yellow text.
 """
+
 import board
 import busio
-import terminalio
 import displayio
-
-# Starting in CircuitPython 9.x fourwire will be a seperate internal library
-# rather than a component of the displayio library
-try:
-    from fourwire import FourWire
-except ImportError:
-    from displayio import FourWire
+import terminalio
 from adafruit_display_text import label
+from fourwire import FourWire
+
 from adafruit_st7789 import ST7789
 
 # First set some parameters used for shapes and text
@@ -63,14 +59,10 @@ bg_sprite = displayio.TileGrid(color_bitmap, pixel_shader=color_palette, x=0, y=
 splash.append(bg_sprite)
 
 # Draw a smaller inner rectangle
-inner_bitmap = displayio.Bitmap(
-    display.width - BORDER * 2, display.height - BORDER * 2, 1
-)
+inner_bitmap = displayio.Bitmap(display.width - BORDER * 2, display.height - BORDER * 2, 1)
 inner_palette = displayio.Palette(1)
 inner_palette[0] = FOREGROUND_COLOR
-inner_sprite = displayio.TileGrid(
-    inner_bitmap, pixel_shader=inner_palette, x=BORDER, y=BORDER
-)
+inner_sprite = displayio.TileGrid(inner_bitmap, pixel_shader=inner_palette, x=BORDER, y=BORDER)
 splash.append(inner_sprite)
 
 # Draw a label
