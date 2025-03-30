@@ -23,7 +23,7 @@ tft_dc = board.D6
 
 display_bus = FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=board.D9)
 
-display = ST7789(display_bus, width=240, height=240, rowstart=80)
+display = ST7789(display_bus, width=240, height=240, rowstart=80, bgr=True, invert=True)
 
 # Make the display context
 splash = displayio.Group()

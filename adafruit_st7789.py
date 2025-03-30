@@ -57,7 +57,6 @@ _INIT_SEQUENCE = (
     b"\x11\x80\xff"  # _SLPOUT and Delay 500ms
     b"\x3a\x81\x55\x0a"  # _COLMOD and Delay 10ms
     b"\x36\x01\x08"  # _MADCTL
-    b"\x21\x80\x0a"  # _INVON Hack and Delay 10ms
     b"\x13\x80\x0a"  # _NORON and Delay 10ms
     b"\x36\x01\xc0"  # _MADCTL
     b"\x29\x80\xff"  # _DISPON and Delay 500ms
@@ -66,7 +65,20 @@ _INIT_SEQUENCE = (
 
 # pylint: disable=too-few-public-methods
 class ST7789(BusDisplay):
-    """ST7789 driver"""
+    """
+	ST7789 driver
+	
+	:param FourWire bus: bus that the display is connected to
+    :param bool bgr: (Optional) An extra init sequence to append (default=False)
+    :param bool invert: (Optional) Invert the colors (default=False)
+ 	"""
 
-    def __init__(self, bus: FourWire, **kwargs) -> None:
-        super().__init__(bus, _INIT_SEQUENCE, **kwargs)
+    def __init__(self, bus: FourWire, *, bgr: bool = False, invert: bool = False, **kwargs: Any):
+        init_sequence = _INIT_SEQUENCE
+        if bgr:
+            init_sequence += b"\x36\x01\xc0"  # _MADCTL Default rotation plus BGR encoding
+        else:
+            init_sequence += b"\x36\x01\xc8"  # _MADCTL Default rotation plus RGB encoding
+        if invert:
+            init_sequence += b"\x21\x00"  # _INVON
+        super().__init__(bus, init_sequence, **kwargs)
