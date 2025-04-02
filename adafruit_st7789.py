@@ -48,7 +48,6 @@ try:
     from fourwire import FourWire
 except ImportError:
     pass
-
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_ST7789.git"
 
@@ -65,19 +64,25 @@ _INIT_SEQUENCE = (
 # pylint: disable=too-few-public-methods
 class ST7789(BusDisplay):
     """
-	  ST7789 driver
-	
-	  :param FourWire bus: bus that the display is connected to
+    ST7789 driver
+
+    :param FourWire bus: bus that the display is connected to
     :param bool bgr: (Optional) An extra init sequence to append (default=True)
     :param bool invert: (Optional) Invert the colors (default=True)
     """
 
-    def __init__(self, bus: FourWire, *, bgr: bool = True, invert: bool = True, **kwargs: Any):
+    def __init__(
+        self, bus: FourWire, *, bgr: bool = True, invert: bool = True, **kwargs: Any
+    ):
         init_sequence = _INIT_SEQUENCE
         if bgr:
-            init_sequence += b"\x36\x01\xc0"  # _MADCTL Default rotation plus BGR encoding
+            init_sequence += (
+                b"\x36\x01\xc0"  # _MADCTL Default rotation plus BGR encoding
+            )
         else:
-            init_sequence += b"\x36\x01\xc8"  # _MADCTL Default rotation plus RGB encoding
+            init_sequence += (
+                b"\x36\x01\xc8"  # _MADCTL Default rotation plus RGB encoding
+            )
         if invert:
             init_sequence += b"\x21\x00"  # _INVON
         super().__init__(bus, init_sequence, **kwargs)
