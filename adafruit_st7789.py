@@ -43,7 +43,7 @@ Implementation Notes
 from busdisplay import BusDisplay
 
 try:
-    import typing
+    from typing import Any
 
     from fourwire import FourWire
 except ImportError:
@@ -58,7 +58,6 @@ _INIT_SEQUENCE = (
     b"\x3a\x81\x55\x0a"  # _COLMOD and Delay 10ms
     b"\x36\x01\x08"  # _MADCTL
     b"\x13\x80\x0a"  # _NORON and Delay 10ms
-    b"\x36\x01\xc0"  # _MADCTL
     b"\x29\x80\xff"  # _DISPON and Delay 500ms
 )
 
@@ -66,14 +65,14 @@ _INIT_SEQUENCE = (
 # pylint: disable=too-few-public-methods
 class ST7789(BusDisplay):
     """
-	ST7789 driver
+	  ST7789 driver
 	
-	:param FourWire bus: bus that the display is connected to
-    :param bool bgr: (Optional) An extra init sequence to append (default=False)
-    :param bool invert: (Optional) Invert the colors (default=False)
- 	"""
+	  :param FourWire bus: bus that the display is connected to
+    :param bool bgr: (Optional) An extra init sequence to append (default=True)
+    :param bool invert: (Optional) Invert the colors (default=True)
+    """
 
-    def __init__(self, bus: FourWire, *, bgr: bool = False, invert: bool = False, **kwargs: Any):
+    def __init__(self, bus: FourWire, *, bgr: bool = True, invert: bool = True, **kwargs: Any):
         init_sequence = _INIT_SEQUENCE
         if bgr:
             init_sequence += b"\x36\x01\xc0"  # _MADCTL Default rotation plus BGR encoding
